@@ -20,26 +20,19 @@ class UserController extends FunctionController
         $behaviors = parent::behaviors();
         $behaviors['authenticator'] = [
             'class' => HttpBearerAuth::class,
-            'only'=>['cab'] //Перечислите для контроллера методы, требующие аутентификации
+            'only'=>['account'] //Перечислите для контроллера методы, требующие аутентификации
             //здесь метод actionAccount()
         ];
         return $behaviors;
     }
 
-
-
+    /*Регистрация пользователя*/
     public function actionCreate(){
-
-        $request=Yii::$app->request->post();      //получение данных из post запроса
+        $request=Yii::$app->request->post(); //получение данных из post запроса
         $user=new User($request); // Создание модели на основе присланных данных
         if (!$user->validate()) return $this->validation($user); //Валидация модели
         $user->password=Yii::$app->getSecurity()->generatePasswordHash($user->password); //хэширование пароля
         $user->save();//Сохранение модели в БД
-        return $this->send(204, $user);//Отправка сообщения пользователю
+        return $this->send(201, ['content'=>['code'=>201, 'message'=>'Вы зарегистрировались']]);//Отправка сообщения пользователю
     }
-    public function actionAccount(){
-        $user=Yii::$app->user->identity;
-        return $this->send(200, $user);
-    }
-
 }

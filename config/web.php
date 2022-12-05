@@ -72,7 +72,7 @@ $config = [
             'showScriptName' => false,
 
             'rules' => [
-                //['class' => 'yii\rest\UrlRule', 'controller' => 'user'],
+               // ['class' => 'yii\rest\UrlRule', 'controller' => 'user'],
                 ['class' => 'yii\rest\UrlRule', 'controller' => 'trip'],// и так далее все табл.
                 //['class' => 'yii\rest\UrlRule', 'controller' => 'ticket'],
 
