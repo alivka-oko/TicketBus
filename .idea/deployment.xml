@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" serverName="ticket">
+  <component name="PublishConfigData" serverName="Tickets">
     <serverData>
       <paths name="Alivka">
         <serverdata>
@@ -9,10 +9,17 @@
           </mappings>
         </serverdata>
       </paths>
-      <paths name="ticket">
+      <paths name="Tickets">
         <serverdata>
           <mappings>
             <mapping deploy="/" local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="ticket">
+        <serverdata>
+          <mappings>
+            <mapping local="$PROJECT_DIR$" web="/" />
           </mappings>
         </serverdata>
       </paths>
