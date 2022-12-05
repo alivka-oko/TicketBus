@@ -72,20 +72,15 @@ $config = [
             'showScriptName' => false,
 
             'rules' => [
-                ['class' => 'yii\rest\UrlRule', 'controller' => 'trip'],
-                ['class' => 'yii\rest\UrlRule', 'controller' => 'user'],
-                /*
-                 * Регистрация URL адресов
-                 * Методические указания по курсовому проектированию стр. 14
+                //['class' => 'yii\rest\UrlRule', 'controller' => 'user'],
+                ['class' => 'yii\rest\UrlRule', 'controller' => 'trip'],// и так далее все табл.
+                //['class' => 'yii\rest\UrlRule', 'controller' => 'ticket'],
 
                 'POST register' => 'user/create',
                 'POST login' => 'user/login',
                 'GET user' => 'user/account',
-                'GET trip' => 'trip/search'*/
-            ]
-
+            ],
         ],
-
     ],
     'params' => $params,
 ];

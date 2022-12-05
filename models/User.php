@@ -1,7 +1,9 @@
 <?php
 
-namespace app\models;
 
+namespace app\models;
+use yii\db\ActiveRecord;
+use yii\web\IdentityInterface;
 use Yii;
 
 /**
@@ -18,7 +20,7 @@ use Yii;
  *
  * @property Ticket[] $tickets
  */
-class User extends \yii\db\ActiveRecord
+class User extends \yii\db\ActiveRecord implements IdentityInterface
 {
     /**
      * {@inheritdoc}
@@ -68,5 +70,52 @@ class User extends \yii\db\ActiveRecord
     public function getTickets()
     {
         return $this->hasMany(Ticket::className(), ['user_id' => 'id_user']);
+    }
+    public function fields()
+    {
+        $fields = parent::fields();
+// удаляем небезопасные поля
+        unset($fields['password'],$fields['id'], $fields['token']);
+        return $fields;
+    }
+    public static function findIdentity($id)
+    {
+        return static::findOne($id);
+    }
+    public static function findByLogin($login)
+    {
+        return static::findOne(['login' => $login]);
+    }
+    public static function findIdentityByAccessToken($token, $type = null)
+    {
+        return static::findOne(['token' => $token]);
+    }
+
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    public function getAuthKey()
+    {
+        return ;
+    }
+
+    public function validateAuthKey($authKey)
+    {
+        return ;
+    }
+    public function validatePassword($password)
+
+    {
+        $hash = Yii::$app->getSecurity()->generatePasswordHash($password);
+
+        if (Yii::$app->getSecurity()->validatePassword($password, $hash)) {
+            return $this;
+        } else {
+            return 0;
+        }
+
+
     }
 }
