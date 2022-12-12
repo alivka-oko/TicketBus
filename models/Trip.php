@@ -37,7 +37,8 @@ class Trip extends \yii\db\ActiveRecord
         return [
             [['city_from', 'city_to', 'date_trip', 'timestart', 'timefinish', 'bus_name', 'ridecode', 'seats'], 'required'],
             [['date_trip', 'timestart', 'timefinish'], 'safe'],
-            [['ridecode', 'seats'], 'integer'],
+            [['ridecode'], 'unique'],
+            [['seats'],'integer'],
             [['city_from', 'city_to'], 'string', 'max' => 40],
             [['bus_name'], 'string', 'max' => 30],
         ];

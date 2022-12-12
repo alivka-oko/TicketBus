@@ -72,13 +72,24 @@ $config = [
             'showScriptName' => false,
 
             'rules' => [
-               // ['class' => 'yii\rest\UrlRule', 'controller' => 'user'],
                 ['class' => 'yii\rest\UrlRule', 'controller' => 'trip'],// и так далее все табл.
-                //['class' => 'yii\rest\UrlRule', 'controller' => 'ticket'],
+                ['class' => 'yii\rest\UrlRule', 'controller' => 'ticket'],
 
-                'POST register' => 'user/create',
-                'POST login' => 'user/login',
-                'GET user' => 'user/account',
+                'POST register' => 'user/create',//+
+                'POST login' => 'user/login',//+
+                'GET user' => 'user/account',//+
+                'GET users' => 'user/users',//+
+              //  'PATCH user/red' => 'user/red',
+                'DELETE user/del' =>'user/del',//+
+
+                'GET trip' => 'trip/trip',//+
+                'POST find' => 'trip/find',//+
+                'GET alltrip' => 'trip/alltrip',//+
+                'GET ticket' => 'ticket/show',//
+                'POST order' => 'ticket/order',//+
+                'POST trip/add' => 'trip/add',//+
+                'PATCH trip/red/<id_trip>' => 'trip/red',//+
+                'DELETE trip/del/<id_trip>' => 'trip/del',//+
             ],
         ],
     ],

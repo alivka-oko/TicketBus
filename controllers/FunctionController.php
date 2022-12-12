@@ -3,6 +3,7 @@ namespace app\controllers;
 use yii\rest\Controller;
 use yii\web\Response;
 use yii\widgets\ActiveForm;
+use Yii;
 class FunctionController extends Controller{
 
     public function send($code, $data){
@@ -18,4 +19,10 @@ class FunctionController extends Controller{
             'errors'=>ActiveForm::validate($model)]];
         return $this->send(422, $error);
     }
+    /*Проверка является ли пользователь админом*/
+    public function is_admin(){
+        if (Yii::$app->user->identity->is_admin==1) return true;
+        else return false;
+    }
+
 }

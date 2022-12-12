@@ -31,7 +31,7 @@ class Ticket extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['user_id', 'trip_id', 'seat'], 'required'],
+            [['user_id', 'seat'], 'required'],
             [['user_id', 'trip_id', 'seat'], 'integer'],
             [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['user_id' => 'id_user']],
             [['trip_id'], 'exist', 'skipOnError' => true, 'targetClass' => Trip::className(), 'targetAttribute' => ['trip_id' => 'id_trip']],
