@@ -57,6 +57,8 @@ class UserController extends FunctionController
         return $this->send(200, ['content'=> ['user'=>$user, 'message'=>'Ваш личный кабинет']]);
     }
 
+    /*Вывод всех пользователей для админа*/
+
     public function actionUsers(){
         if (!$this->is_admin())
             return $this->send(403, ['content'=> ['code'=>403, 'message'=>'Вы не являетесь администратором']]);
@@ -65,24 +67,7 @@ class UserController extends FunctionController
         return $this->send(200, ['Users'=>$user]);
 
     }
-
-    /*Редакторовать профиль*/
-    public function actionRed(){/*
-        $request=Yii::$app->request->getBodyParams();
-        $user=Yii::$app->user->identity;
-
-        if (isset($request['login'])) $user->login = $request['login'];
-        if (isset($request['password'])) $user->password = $request['password']  = Yii::$app->getSecurity()->generatePasswordHash($user->password);
-        if (isset($request['first_name'])) $user->first_name = $request['first_name'];
-        if (isset($request['last_name'])) $user->last_name = $request['last_name'];
-        if (isset($request['phone'])) $user->phone = $request['phone'];
-        if (isset($request['document_number'])) $user->document_number = $request['document_number'];
-
-        if (!$user->validate()) return $this->validation($user);
-        $user->save();
-        return $this->send(200, ['content'=>['code'=>200, 'message'=>'Данные обновлены!']]);*/
-
-    }
+    /*Удаление пользователя*/
 
     public function actionDel(){
         $user=Yii::$app->user->identity;

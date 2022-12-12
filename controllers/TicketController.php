@@ -55,10 +55,6 @@ class TicketController extends FunctionController
             'user_id'=>$user->id_user
         ]);
 
-        /*$trip = Trip::findAll([
-            'id_trip'=>$ticket->
-        ]);*/
-
         return $this->send(200, ['Билеты' => $ticket]);
     }
 }
